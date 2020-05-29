@@ -1,0 +1,7 @@
+.comments-box {
+  display: grid;
+  grid-template-columns: auto;
+  width: 70%;
+  margin: auto;
+  margin-top: 75px;
+}
