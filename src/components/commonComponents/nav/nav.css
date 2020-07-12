@@ -1,0 +1,84 @@
+.nav_custom_styles {
+  color: #005681 !important;
+  background: #ccfff6;
+  padding: 1em;
+  align-items: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto 100px 100px;
+}
+
+/* .line { 
+  background: #005681;
+  height: 1px;
+  width: 20px;
+  z-index: 10;s
+} */
+
+.nav_btn {
+  font-size: 1em;
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+  background: palevioletred;
+  color: #ccfff6;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  font-size: 30px;
+  font-family: "MuseoModerno", cursive;
+  font-weight: 900;
+  z-index: 22220;
+  position: relative;
+  justify-self: start;
+}
+.logo::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  bottom: 10%;
+  left: 5px;
+  width: 75px;
+  height: 15px;
+  background: #db7093;
+  transition: 0.35s;
+  transform-origin: 0% 100%;
+}
+
+.logo:hover::before {
+  transform: scaleX(2.9);
+}
+
+.btn_add,
+.btn_settings {
+  position: relative;
+  z-index: 0;
+}
+
+.btn_add::after,
+.btn_settings::after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  height: 5px;
+  background: #005681;
+  transition: 0.35s;
+  transform-origin: 0% 100%;
+  z-index: 10;
+}
+
+.btn_add:hover::after,
+.btn_settings:hover::after {
+  width: 100%;
+}
+
+.btn_add:active::after,
+.btn_settings:active::after {
+  transform: scaleY(4);
+  opacity: 0.5;
+}

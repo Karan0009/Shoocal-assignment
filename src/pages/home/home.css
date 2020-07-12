@@ -1,0 +1,120 @@
+.main_wrapper {
+  display: grid;
+  grid-row: auto;
+  grid-template-columns: auto 600px auto;
+  grid-template-rows: auto;
+  justify-items: stretch;
+}
+
+.ad_wrapper {
+  background: #00000049;
+  font-size: 40px;
+  overflow: hidden;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.interact_buttons {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  margin-top: 20px;
+  justify-self: center;
+}
+
+.btn_interact {
+  padding: 0.5rem;
+  background: #db7093;
+  color: #ccfff6;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin: 0 10px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.main {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+}
+
+.workouts_home {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+}
+.exercise_info {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto 20px;
+  align-items: start;
+  background: #005681;
+  padding: 1.5rem;
+}
+
+.exercise_info_form {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto 100px;
+  justify-self: center;
+}
+
+.exercise_info_form input {
+  border: none;
+  background: #ccfff6;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: #005681;
+  font-size: 1em;
+  margin: 0 5px;
+}
+
+.exercise_info_form input::placeholder {
+  font-size: 1em;
+  color: #005681;
+}
+
+.btn_exercise_info_submit {
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  margin: 0 5px;
+  color: #005681;
+  background: #db7093;
+}
+
+.btn_exercise_info_close {
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  background: transparent;
+  color: #db7093;
+  padding: 0.1em;
+}
+
+@media only screen and (max-width: 768px) {
+  .main_wrapper {
+    display: grid;
+    grid-row: auto;
+    grid-template-columns: auto;
+    grid-template-rows: 200px auto 200px;
+    background: red;
+  }
+
+  .exercise_info_form {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    justify-self: stretch;
+  }
+  .exercise_info_form input {
+    margin: 5px 5px;
+  }
+  .btn_exercise_info_submit {
+    margin: 5px 5px;
+  }
+}

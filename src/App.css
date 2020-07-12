@@ -1,48 +1,37 @@
 * {
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  outline: none;
 }
 
-.App {
-  text-align: center;
+a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
-.container {
-  margin: auto;
-  margin-top: 20px;
+a:hover {
+  color: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.wrapper {
   position: relative;
+  height: 56px;
+  width: 200px;
+  padding: 1px;
 }
 
-.container form {
-  width: 70%;
-  margin: auto;
+.input {
+  background: #ccc;
   position: relative;
-}
-
-.comment-textarea {
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #acacac80;
-  box-shadow: none;
-  color: #b7b7b7;
-  font-size: 20px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.btn-post-comment {
-  padding: 10px;
-  color: white;
-  background: #f94148;
-  border: 0;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 15px;
-  position: absolute;
-  top: 135px;
-  right: -20px;
-  /* margin-top: 25px; */
-}
-
-::placeholder {
-  color: #b7b7b7;
+  z-index: 2;
 }

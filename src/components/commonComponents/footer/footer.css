@@ -1,0 +1,42 @@
+.footer_custom_styles {
+  color: #005681 !important;
+  background: #ccfff6;
+  padding: 1em;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50px 50px;
+  position: fixed;
+  width: 100%;
+  bottom: 0%;
+}
+
+.btn_social_media {
+  padding: 1.5rem;
+}
+
+.btn_social_media i {
+  font-size: 25px;
+  position: relative;
+  color: inherit;
+  z-index: 20;
+}
+
+.btn_social_media i::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: 100%;
+  left: 5px;
+  bottom: 0;
+  height: 7px;
+  background: #db7093;
+  transform-origin: 0% 100%;
+  transition: 0.35s;
+}
+
+.btn_social_media i:hover::after {
+  transform: scaleY(2);
+}

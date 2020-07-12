@@ -1,145 +1,100 @@
 import React, { Component } from "react";
+import { withRouter, Switch, Route } from "react-router-dom";
+import styled from "styled-components";
 import "./App.css";
 
-import CommentBox from "./components/comments";
+import Input from "./components/commonComponents/input/input";
+import Button from "./components/commonComponents/Button/Button";
+import Nav from "./components/commonComponents/nav/nav";
+import Footer from "./components/commonComponents/footer/footer";
+import WorkoutAddForm from "./components/workoutAddForm/workoutAddForm";
+import HomePage from "./pages/home/home";
+import SettingsPage from "./pages/settings/settings";
 
 class App extends Component {
   state = {
-    user: { _id: 1, username: "default user" },
-    commentValue: "",
-    comments: [
+    appName: "Let's workout",
+    defaultRestTime: 30,
+    exercises: [
       {
-        _id: "1",
-        author: "some user",
-        body: "this is the body of the comment",
-        upvotes: 0,
-        upvoters: [],
-        downvoters: [],
-        downvotes: 0,
+        exerciseName: "one",
+        exerciseDuration: 30,
+        restDuration: 10,
+      },
+      {
+        exerciseName: "two",
+        exerciseDuration: 30,
+        restDuration: 10,
+      },
+      {
+        exerciseName: "three",
+        exerciseDuration: 60,
+        restDuration: 10,
+      },
+      {
+        exerciseName: "four",
+        exerciseDuration: 30,
+        restDuration: 10,
       },
     ],
+    showExerciseAddForm: false,
   };
 
-  handleCommentInput = (e) => {
-    const value = e.target.value;
-    this.setState({ commentValue: value });
+  showExerciseAddFormHandler = () => {
+    const showExerciseAddForm = this.state.showExerciseAddForm;
+    this.setState({ showExerciseAddForm: !showExerciseAddForm });
   };
 
-  postComment = (e) => {
+  removeExercise = (name) => {
+    const exercises = this.state.exercises.filter(
+      (exercise) => exercise.exerciseName !== name
+    );
+    this.setState({ exercises });
+  };
+
+  addExerciseHandler = (e, data) => {
+    const exercises = this.state.exercises;
     e.preventDefault();
-    const comments = this.state.comments;
-    const author = this.state.user;
-    const commentValue = this.state.commentValue;
-    if (commentValue !== "") {
-      const comment = {
-        _id: Math.floor(Math.random() * 1000),
-        author: author.username,
-        body: commentValue,
-        upvotes: 0,
-        upvoters: [],
-        downvoters: [],
-        downvotes: 0,
-      };
-      comments.push(comment);
-      console.log(comment);
-      this.setState({ commentValue: "", comments });
-    } else {
-      console.log("comment box is empty");
-    }
-  };
-
-  canUpvote = (user, comment) => {
-    if (comment) {
-      const index = comment.upvoters.findIndex(
-        (upvoter) => upvoter._id === user._id
-      );
-      if (index > -1) {
-        return false;
-      } else return true;
-    }
-  };
-
-  canDownvote = (user, comment) => {
-    if (comment) {
-      const index = comment.downvoters.findIndex(
-        (downvoter) => downvoter._id === user._id
-      );
-      if (index > -1) {
-        return false;
-      } else return true;
-    }
-  };
-
-  handleUpvote = (id) => {
-    const comments = this.state.comments;
-    const user = this.state.user;
-    const comment = comments.find((comment) => comment._id === id);
-    if (comment) {
-      if (this.canUpvote(user, comment)) {
-        comment.upvotes += 1;
-        comment.upvoters.push(user);
-      } else {
-        comment.upvotes -= 1;
-        const upvoters = comment.upvoters.filter(
-          (upvoter) => upvoter._id !== user._id
-        );
-        comment.upvoters = upvoters;
-      }
-
-      this.setState({ comments });
-
-      console.log("upvoted", id);
-    }
-  };
-
-  handleDownvote = (id) => {
-    const comments = this.state.comments;
-    const user = this.state.user;
-    const comment = comments.find((comment) => comment._id === id);
-    if (comment) {
-      if (this.canDownvote(user, comment)) {
-        comment.downvotes += 1;
-        comment.downvoters.push(user);
-      } else {
-        comment.downvotes -= 1;
-        const downvoters = comment.downvoters.filter(
-          (downvoter) => downvoter._id !== user._id
-        );
-        comment.downvoters = downvoters;
-      }
-
-      this.setState({ comments });
-      console.log("downvoted", id);
-    }
+    const exercise = { ...data, restDuration: this.state.defaultRestTime };
+    exercises.push(exercise);
+    this.setState({ exercises });
   };
 
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <form onSubmit={(e) => this.postComment(e)}>
-            <textarea
-              onChange={(e) => this.handleCommentInput(e)}
-              rows="3"
-              placeholder="Type a Comment"
-              className="comment-textarea"
-              value={this.state.commentValue}
-            ></textarea>
-            <br />
-            <button className="btn btn-post-comment" type="submit">
-              Post Comment
-            </button>
-          </form>
-          <CommentBox
-            postComment={this.postComment}
-            handleUpvote={this.handleUpvote}
-            handleDownvote={this.handleDownvote}
-            comments={this.state.comments}
+        <Nav
+          {...this.props}
+          appName={this.state.appName}
+          showForm={this.showExerciseAddFormHandler}
+        />
+
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <HomePage
+                {...props}
+                showExerciseAddFormHandler={this.showExerciseAddFormHandler}
+                exercises={this.state.exercises}
+                removeExercise={this.removeExercise}
+                addExerciseHandler={this.addExerciseHandler}
+                showExerciseAddForm={this.state.showExerciseAddForm}
+              />
+            )}
           />
-        </div>
+          <Route
+            exact
+            path="/settings"
+            render={(props) => <SettingsPage {...props} />}
+          />
+          <Route path="/" render={() => <div>wrong path bro</div>} />
+        </Switch>
+        <Footer />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,0 +1,67 @@
+.workoutAddForm_box {
+  width: 500px;
+  background: #005681;
+  padding: 1em;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  font-size: 20px;
+}
+
+/* .workout_name,
+.workout_time {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: stretch;
+  margin-bottom: 20px;
+} */
+
+.workout_name_input,
+.workout_time_input {
+  padding: 5px !important;
+  outline: 0px;
+  border: none;
+  width: 100%;
+  background: #ccfff6;
+  color: #005681;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.workout_time_select {
+  padding: 5px !important;
+  outline: 0px;
+  border: none;
+  width: 100%;
+  background: #ccfff6;
+  color: #005681;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.workout_submit_btn {
+  border: none;
+  padding: 5px;
+  background: #db7093;
+  font-size: 20px;
+  font-weight: bold;
+  color: #005681;
+}
+
+.btn_workoutName {
+  border: none;
+  padding: 5px;
+  background: #db7093;
+  font-size: 20px;
+  font-weight: bold;
+  color: #005681;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.workout_time {
+  display: grid;
+}

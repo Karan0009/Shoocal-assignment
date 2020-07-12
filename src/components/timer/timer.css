@@ -1,0 +1,10 @@
+.timer_container {
+  text-align: center;
+}
+
+.timer {
+  font-size: 4.5rem;
+  font-weight: bold;
+  font-family: "MuseoModerno", Arial, Helvetica, sans-serif;
+  margin: none;
+}

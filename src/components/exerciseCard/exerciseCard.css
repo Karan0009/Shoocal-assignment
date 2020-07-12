@@ -1,0 +1,73 @@
+.card {
+  position: relative;
+  z-index: 0;
+}
+
+.card::after {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  background: #08bec350;
+}
+
+.excerciseCard_info {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.btn_removeExercise {
+  justify-self: end;
+  border: 0px;
+  color: palevioletred;
+  outline: none;
+  background: transparent;
+}
+
+.circle {
+  border-radius: 50%;
+  background: palevioletred;
+  max-width: 150px;
+  max-height: 150px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.exerciseCard_time {
+  margin: 0px;
+  padding: 0px;
+  color: #005681;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.exerciseCard_name {
+  margin: 0px;
+  padding: 0px;
+  color: #005681;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-size: 20px;
+  max-width: 200px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.exerciseCard_restTime {
+  margin: 0px;
+  padding: 0px;
+  color: #005681;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-size: 20px;
+}
